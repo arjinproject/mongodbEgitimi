@@ -10,13 +10,21 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-// veritabanı bağlantısı
-mongoose.connect('mongodb://localhost/udemy', { useNewUrlParser: true })
-.then(()=>{
-  console.log("Bağlantı Sağlandı");
-}).catch((err)=>{
-  console.log("Bağlantı Hatası");
+// // veritabanı bağlantısı 1. yöntem
+// mongoose.connect('mongodb://localhost/kutuphane', { useNewUrlParser: true })
+// .then(()=>{
+//   console.log("Bağlantı Sağlandı");
+// }).catch((err)=>{
+//   console.log("Bağlantı Hatası");
   
+// });
+
+// veritabanı bağlantısı 2. yöntem
+mongoose.connect('mongodb://localhost/kutuphane', { useNewUrlParser: true });
+mongoose.connection.on('open',()=>{
+  console.log("Bağlantı sağlandı");
+}).then("error",(err)=>{
+  console.log("Bağlantı hatası. Hata:", err);
 });
 
 // view engine setup

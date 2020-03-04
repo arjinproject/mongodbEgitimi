@@ -31,29 +31,43 @@ router.post('/new', function (req, res, next) {
 });
 
 router.get("/search", (req, res, next) => {
-  Book.find({ published: true },"tarih", (err,data)=>{
+  Book.find({ published: true }, "tarih", (err, data) => {
     res.json(data);
   })
 })
 
 router.get("/all", (req, res, next) => {
-  Book.find({  },"title", (err,data)=>{
+  Book.find({}, "title", (err, data) => {
     res.json(data);
   })
-})
+});
 
 router.get("/searchOne", (req, res, next) => {
   // bulduğu ilk kaydı tek getiriyor
-  Book.findOne({  },"title", (err,data)=>{
+  Book.findOne({}, "title", (err, data) => {
     res.json(data);
   })
-})
+});
 
 router.get("/searchById", (req, res, next) => {
-  // bulduğu ilk kaydı tek getiriyor
-  Book.findById("5e5f7bc4f3c70c0491b9c30d","title", (err,data)=>{
+  Book.findById("5e5f7bc4f3c70c0491b9c30d", "title", (err, data) => {
     res.json(data);
   })
-})
+});
+
+// update
+router.put("/update", (req, res) => {
+  // published alanı false olanı true yap
+  Book.update({ published: false }, { published: true },{upsert:true}, (err, data) => {
+    res.json(data);
+  })
+});
+
+router.put("/updateById", (req, res) => {
+  // id bazlı güncelleme
+  Book.findByIdAndUpdate("5e5f7da4eeba7d04f2d0c0e7", { published: true, title: "Bu id güncellendi" }, (err, data) => {
+    res.json(data);
+  })
+});
 
 module.exports = router;

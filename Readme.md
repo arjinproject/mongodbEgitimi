@@ -7,3 +7,5 @@
 3- type-default-required-unique keywordler
 
 4- mongodb get işlemleri
+
+5- güncelleme işlemleri

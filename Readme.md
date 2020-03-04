@@ -5,3 +5,5 @@
 2- npm install mongoose -s ile mongoose kurulumu.
 
 3- type-default-required-unique keywordler
+
+4- mongodb get işlemleri

@@ -15,14 +15,14 @@ const BookSchema = new Schema({
         required: true // girilmesi zorunlu
     },
     email:{
-        type: email,
+        type: String,
         unique:true, // benzersiz olmalı
     },
     desc: String,
     tarih: [{ mess1: String, mess2: String }],
     published: {
         type: Boolean,
-        default: false, // hiçbişey girilmez ise default olarak bu girilir.
+        default: true, // hiçbişey girilmez ise default olarak bu girilir.
     }
 });
 

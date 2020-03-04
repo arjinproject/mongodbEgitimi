@@ -22,7 +22,7 @@ var app = express();
 // });
 
 // veritabanı bağlantısı 2. yöntem
-mongoose.connect('mongodb://localhost/kutuphane', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/kutuphane', { useNewUrlParser: true, useCreateIndex: true });
 mongoose.connection.on('open', () => {
   console.log("Bağlantı sağlandı");
 }).then("error", (err) => {

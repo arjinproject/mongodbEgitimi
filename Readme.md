@@ -16,3 +16,4 @@
 
 8- limit ve skip işlemleri
 
+9- kümeleme işlemleri (aggregate)

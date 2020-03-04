@@ -99,7 +99,7 @@ router.get("/sort", (req, res, next) => {
   Book.find({}, (err, data) => {
     res.json(data);
     // 1 küçükten büyüğe sırala demek
-  }).sort({ "title": -1});
+  }).sort({ "title": -1 });
 });
 
 // limit and skip
@@ -110,11 +110,51 @@ router.get("/limit", (req, res, next) => {
   }).limit(3);
 });
 
-router.get("/skip", (req, res, next) => {
+router.get("/skip", (req, res) => {
   Book.find({}, (err, data) => {
     res.json(data);
     // 2. kayıttan sonra 3 kayıt getir
   }).skip(2).limit(3);
+});
+
+// aggregate - kümeleme
+router.get("/aggregate", (req, res) => {
+
+  Book.aggregate([
+    {
+      $match: {
+        //published: true olanları tek getirdi
+        published: true,
+      }
+    },
+    /*{
+      $group: {
+        // her kategoride kaç adet içerik varsa gösteriyor
+        _id: "$title",
+        adet:{$sum:1}
+      }
+    }*/
+    {
+      $project: {
+        // gelen içeriklerin sadece titlesini getirir 
+        title: 1
+      }
+    },
+    {
+      $sort: {
+        // sıralama işlemleri için kullanılır
+        title: 1
+      }
+    },
+    {
+      $limit: 5
+    },
+    {
+      $skip: 3
+    }
+  ], (err, result) => {
+    res.json(result);
+  })
 });
 
 module.exports = router;

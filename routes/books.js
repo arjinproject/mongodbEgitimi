@@ -18,9 +18,10 @@ router.post('/new', function (req, res, next) {
       console.log(err);
     console.log(data);
     try {
+      // var ss=JSON.parse(data.JSON.parse);
       res.json(data);
     } catch (error) {
-      console.log("res.json(data); hala çalışmıyor");
+      console.log("res.json(data); hala çalışmıyor2");
     }
 
   });

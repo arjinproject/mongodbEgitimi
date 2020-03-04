@@ -58,7 +58,7 @@ router.get("/searchById", (req, res, next) => {
 // update
 router.put("/update", (req, res) => {
   // published alanı false olanı true yap
-  Book.update({ published: false }, { published: true },{upsert:true}, (err, data) => {
+  Book.update({ published: false }, { published: true }, { upsert: true }, (err, data) => {
     res.json(data);
   })
 });
@@ -69,5 +69,30 @@ router.put("/updateById", (req, res) => {
     res.json(data);
   })
 });
+
+// delete
+router.delete("/delete", (req, res) => {
+  // published: false olanları sil
+  Book.remove({ published: false }, (err, data) => {
+    res.json(data);
+  })
+});
+
+router.delete("/deleteById", (req, res) => {
+  // önce datayı bulup sonra siliyoruz
+  Book.findById("5e5f7ed624c09e05399fd899", (err, book) => {
+    book.remove((err, data) => {
+      res.json(data);
+    })
+  })
+});
+
+router.delete("/deleteOne", (req, res) => {
+  // önce datayı bulup sonra direk siliyoruz. Sadece bir tane siliyor
+  Book.findOneAndRemove({ published: true }, (err, book) => {
+    res.json(book);
+  })
+});
+
 
 module.exports = router;

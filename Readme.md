@@ -9,3 +9,5 @@
 4- mongodb get işlemleri
 
 5- güncelleme işlemleri
+
+6- silme işlemleri

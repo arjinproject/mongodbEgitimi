@@ -99,7 +99,22 @@ router.get("/sort", (req, res, next) => {
   Book.find({}, (err, data) => {
     res.json(data);
     // 1 küçükten büyüğe sırala demek
-  }).sort({ "title": -1})
+  }).sort({ "title": -1});
+});
+
+// limit and skip
+router.get("/limit", (req, res, next) => {
+  Book.find({}, (err, data) => {
+    res.json(data);
+    // 3 kayıt getirecek
+  }).limit(3);
+});
+
+router.get("/skip", (req, res, next) => {
+  Book.find({}, (err, data) => {
+    res.json(data);
+    // 2. kayıttan sonra 3 kayıt getir
+  }).skip(2).limit(3);
 });
 
 module.exports = router;

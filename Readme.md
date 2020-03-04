@@ -13,3 +13,6 @@
 6- silme işlemleri (remove)
 
 7- sıralama işlemleri (sort)
+
+8- limit ve skip işlemleri
+

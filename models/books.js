@@ -12,7 +12,8 @@ const Schema = mongoose.Schema;
 const BookSchema = new Schema({
     title: {
         type: String,
-        required: true // girilmesi zorunlu
+        required: true, // girilmesi zorunlu
+        maxlength: [20, "`{PATH}` alanına fazla 20 karakter girilebilir"],
     },
     email:{
         type: String,

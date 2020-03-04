@@ -8,7 +8,7 @@ const Book = require("../models/Books");
 /* GET books. */
 router.post('/new', function (req, res, next) {
   const book = new Book({
-    title: "Kitap",
+    title: "Kitap444",
     desc: "Tanım",
     email: "hmtsyrk@gmail.com",
     tarih: [{ mess1: "Mersaj 1", mess2: "Mesaj 2" }]

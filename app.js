@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/udemy', { useNewUrlParser: true })
   console.log("Bağlantı Sağlandı");
 }).catch((err)=>{
   console.log("Bağlantı Hatası");
+  
 });
 
 // view engine setup

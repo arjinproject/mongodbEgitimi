@@ -34,7 +34,7 @@ router.get("/search", (req, res, next) => {
   Book.find({ published: true }, "tarih", (err, data) => {
     res.json(data);
   })
-})
+});
 
 router.get("/all", (req, res, next) => {
   Book.find({}, "title", (err, data) => {
@@ -94,5 +94,12 @@ router.delete("/deleteOne", (req, res) => {
   })
 });
 
+// sort
+router.get("/sort", (req, res, next) => {
+  Book.find({}, (err, data) => {
+    res.json(data);
+    // 1 küçükten büyüğe sırala demek
+  }).sort({ "title": -1})
+});
 
 module.exports = router;

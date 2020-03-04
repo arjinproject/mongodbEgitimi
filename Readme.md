@@ -10,4 +10,6 @@
 
 5- güncelleme işlemleri
 
-6- silme işlemleri
+6- silme işlemleri (remove)
+
+7- sıralama işlemleri (sort)

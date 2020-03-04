@@ -4,4 +4,4 @@
 
 2- npm install mongoose -s ile mongoose kurulumu
 
-3- git deneme
+3- 
